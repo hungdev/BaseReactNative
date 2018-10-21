@@ -5,14 +5,13 @@ import { connect } from 'react-redux'
 import { getLogin } from '../actions/loginAction'
 
 class profileScreen extends React.Component {
+  componentWillMount(){
+    this.props.navigation.navigate('Auth');
+  }
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Detail Screen</Text>
-        <Button
-          title='Button'
-          onPress={() => this.props.getLogin()}
-        />
+        <Text>Auth Screen</Text>
       </View>
     )
   }

@@ -13,13 +13,16 @@
     "react-navigation": "^2.18.0",
     "react-navigation-redux-helpers": "^2.0.6",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
+    "redux-saga": "^0.16.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
     "react-test-renderer": "16.6.0-alpha.8af6728",
+    "reactotron-react-native": "^2.1.0",
     "schedule": "^0.4.0"
   },
   "jest": {

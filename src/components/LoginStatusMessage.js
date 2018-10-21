@@ -36,7 +36,7 @@ LoginStatusMessage.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.auth.isLoggedIn,
+  isLoggedIn: state.login.isLoggedIn,
 });
 
 export default connect(mapStateToProps)(LoginStatusMessage);

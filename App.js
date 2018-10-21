@@ -1,23 +1,51 @@
-import React from 'react';
-import { AppRegistry } from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, AsyncStorage } from 'react-native';
+//Redux
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
-import AppReducer from './src/reducers';
+import allReducers from './src/reducers'
+//Redux saga
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './src/sagas';
+
+import { REHYDRATE, PURGE, persistCombineReducers, persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // or whatever storage you are using
+import { PersistGate } from 'redux-persist/es/integration/react';
 import { AppNavigator, middleware } from './src/navigators/AppNavigator';
 
-const store = createStore(AppReducer, applyMiddleware(middleware));
+const sagaMiddleware = createSagaMiddleware();
+const persistConfig = {
+  key: 'root',
+  storage,
+  // whitelist: [                    
+  //   'accountReducer'
+  // ],
+  // blacklist: [
+  //   'progressReducer',
+  //   'videoReducers',
+  //   'accountReducer'
+  // ]
+}
 
-class ReduxExampleApp extends React.Component {
+// let reducer = persistCombineReducers(config, allReducers)
+const persistedReducer = persistReducer(persistConfig, allReducers)
+
+let store = createStore(persistedReducer, undefined, compose(
+  applyMiddleware(sagaMiddleware, middleware),
+  // autoRehydrate()
+));
+let persistor = persistStore(store)
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <PersistGate loading={null} persistor={persistor}>
+          <AppNavigator />
+        </PersistGate>
       </Provider>
     );
   }
 }
 
-AppRegistry.registerComponent('ReduxExample', () => ReduxExampleApp);
-
-export default ReduxExampleApp;
+sagaMiddleware.run(rootSaga);
