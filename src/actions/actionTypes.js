@@ -5,3 +5,9 @@ export const GET_LOGIN_FAILED = 'GET_LOGIN_FAILED'
 export const GET_LOGOUT = 'GET_LOGOUT'
 export const GET_LOGOUT_SUCCESS = 'GET_LOGOUT_SUCCESS'
 export const GET_LOGOUT_FAILED = 'GET_LOGOUT_FAILED'
+
+export const GO_TO_DETAIL = 'GO_TO_DETAIL'
+export const GO_TO_PROFILE = 'GO_TO_PROFILE'
+export const GO_TO_LOGIN = 'GO_TO_LOGIN'
+
+export const ROOT_NAV_BACK= 'ROOT_NAV_BACK'

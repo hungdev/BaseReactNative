@@ -2,10 +2,14 @@ import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
 import Rt from 'reactotron-react-native'
 
-import { RootNavigator } from '../navigators/AppNavigator';
+import { RootNavigator, StackActions } from '../navigators/AppNavigator';
 
 import {
-  GET_LOGIN, GET_LOGOUT
+  GET_LOGIN, GET_LOGOUT,
+  GO_TO_DETAIL,
+  GO_TO_PROFILE,
+  ROOT_NAV_BACK,
+  GO_TO_LOGIN
 } from '../actions/actionTypes'
 
 // Start with two routes: The Main screen, with the Login screen on top.
@@ -32,6 +36,27 @@ export default function nav(state = initialNavState, action) {
         NavigationActions.navigate({ routeName: 'Login' }),
         state
       );
+      break;
+    case GO_TO_DETAIL:
+      nextState = RootNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'DetailScreen' }),
+        state
+      );
+      break;
+    case GO_TO_PROFILE:
+      nextState = RootNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'ProfileScreen' }),
+        state
+      );
+      break;
+    case GO_TO_LOGIN:
+      nextState = RootNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Login' }),
+        state
+      );
+      break;
+    case ROOT_NAV_BACK:
+      nextState = RootNavigator.router.getStateForAction(NavigationActions.back(), state);
       break;
     default:
       nextState = RootNavigator.router.getStateForAction(action, state);

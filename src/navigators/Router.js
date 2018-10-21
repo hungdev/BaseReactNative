@@ -6,7 +6,8 @@ import {
 } from 'react-navigation'
 import HotScreen from '../containers/HotScreen'
 import AllScreen from '../containers/AllScreen'
-import DetailScreen from '../containers/ProfileScreen'
+import ProfileScreen from '../containers/ProfileScreen'
+import DetailScreen from '../containers/DetailScreen'
 import LoginScreen from '../containers/LoginScreen'
 import MainScreen from '../containers/MainScreen'
 import AuthLoadingScreen from '../containers/AuthLoadingScreen'
@@ -25,8 +26,8 @@ const TabAllScreen = StackNavigator({
   Main: {
     screen: AllScreen,
   },
-  DetailScreen: {
-    screen: DetailScreen,
+  ProfileScreen: {
+    screen: ProfileScreen,
   }
 })
 
@@ -73,12 +74,9 @@ const AppStack = createStackNavigator({
 const AuthStack = createStackNavigator({ Login: LoginScreen });
 
 // Manifest of possible screens
-const PrimaryNav = createStackNavigator({
-  // AuthLoading: AuthLoadingScreen,
-  // Main: MainScreen,
-  // Login: LoginScreen,
-  Login: { screen: LoginScreen },
-  Main: { screen: MainScreen },
+const PrimaryNav = createSwitchNavigator({
+  Login: { screen: AuthStack },
+  Main: { screen: tabNav },
   Profile: { screen: DetailScreen },
 }, {
     // initialRouteName: 'AuthLoading',

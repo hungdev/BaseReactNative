@@ -13,6 +13,7 @@ import { REHYDRATE, PURGE, persistCombineReducers, persistStore, persistReducer 
 import storage from 'redux-persist/lib/storage' // or whatever storage you are using
 import { PersistGate } from 'redux-persist/es/integration/react';
 import { AppNavigator, middleware } from './src/navigators/AppNavigator';
+import RootNav from './src/navigators';
 
 const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
@@ -41,7 +42,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppNavigator />
+          <RootNav />
         </PersistGate>
       </Provider>
     );
