@@ -11,6 +11,8 @@ import {
   ROOT_NAV_BACK,
   GO_TO_LOGIN
 } from '../actions/actionTypes'
+import { NAVIGATION } from '../actions/actionTypes'
+
 
 // Start with two routes: The Main screen, with the Login screen on top.
 const firstAction = RootNavigator.router.getActionForPathAndParams('Main');
@@ -37,7 +39,7 @@ export default function nav(state = initialNavState, action) {
         state
       );
       break;
-    case GO_TO_DETAIL:
+    case NAVIGATION.DETAIL_SCREEN:
       nextState = RootNavigator.router.getStateForAction(
         NavigationActions.navigate({ routeName: 'DetailScreen' }),
         state

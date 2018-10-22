@@ -4,11 +4,12 @@ import {
   ROOT_NAV_BACK,
   GO_TO_LOGIN
 } from './actionTypes'
+import { NAVIGATION } from './actionTypes'
 import Rt from 'reactotron-react-native'
 
 export const goToDetailScreen = (data) => {
   return {
-    type: GO_TO_DETAIL,
+    type: NAVIGATION.DETAIL_SCREEN,
     data
   }
 }
