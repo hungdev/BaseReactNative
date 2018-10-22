@@ -8,13 +8,16 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
+    "lodash": "^4.17.11",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "^0.57.1",
     "react-navigation": "^2.18.0",
     "react-navigation-redux-helpers": "^2.0.6",
+    "react-navigation-slide-from-right-transition": "^1.0.4",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
+    "redux-persist-transform-filter": "0.0.18",
     "redux-saga": "^0.16.2"
   },
   "devDependencies": {
